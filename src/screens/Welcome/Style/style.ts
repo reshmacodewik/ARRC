@@ -9,44 +9,40 @@ export default StyleSheet.create({
     flex: 1,
   },
 
-
   glow: {
-
     width: wp(100),
     height: hp(50),
     borderRadius: 30,
-
-   
   },
 
- cardWrapper: {
-  width: wp(100),
-  height: hp(45),
-  alignSelf: 'center',
-  marginTop: hp(2), 
-  justifyContent: 'center',
-  alignItems: 'center',
-},
+  cardWrapper: {
+    width: wp(100),
+    height: hp(45),
+    alignSelf: 'center',
+    marginTop: hp(2),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 
-backCard: {
-  position: 'absolute',
-  width: wp(85),   
-  height: hp(50), 
-  resizeMode: 'contain',
-  transform: [{ rotate: '5deg' }],
-  right: wp(0),
-  top: hp(2),
-},
+  backCard: {
+    position: 'absolute',
+    width: wp(85),
+    height: hp(50),
+    resizeMode: 'contain',
+    transform: [{ rotate: '5deg' }],
+    right: wp(0),
+    top: hp(2),
+  },
 
-frontCard: {
-  position: 'absolute',
-  width: wp(85),  
-  height: hp(50),  
-  resizeMode: 'contain',
-  transform: [{ rotate: '3deg' }],
-  left: wp(-5),
-  top: hp(13),
-},
+  frontCard: {
+    position: 'absolute',
+    width: wp(85),
+    height: hp(50),
+    resizeMode: 'contain',
+    transform: [{ rotate: '3deg' }],
+    left: wp(-5),
+    top: hp(13),
+  },
   cards: {
     width: wp(115),
     height: hp(58),
