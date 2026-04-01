@@ -1,5 +1,7 @@
 export const FONTS = {
-  regular: 'SFPRODISPLAYREGULAR',
-  semiBold: 'SFPRODISPLAYSEMIBOLD',
-  bold: 'SFPRODISPLAYBOLD',
+  regular: 'SFProDisplay-Regular',
+  semiBold: 'SFProDisplay-SemiBold',
+  bold: 'SFProDisplay-Bold',
+  medium: 'SFProDisplay-Medium',
+  pmedium: 'Poppins-Medium'
 };

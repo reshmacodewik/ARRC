@@ -14,12 +14,11 @@ export default StyleSheet.create({
     height: hp(50),
     borderRadius: 30,
   },
-
   cardWrapper: {
     width: wp(100),
     height: hp(45),
     alignSelf: 'center',
-    marginTop: hp(2),
+    marginTop: hp(-5),
     justifyContent: 'center',
     alignItems: 'center',
   },

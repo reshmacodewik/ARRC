@@ -11,7 +11,7 @@ const Layout = ({ children }: any) => {
     <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'light-content'}
-        backgroundColor={COLORS.background}
+
       />
       <View style={styles.container}>{children}</View>
     </SafeAreaView>

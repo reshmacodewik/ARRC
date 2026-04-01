@@ -56,5 +56,12 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Poppins-Medium.ttf</string>
+		<string>SFProDisplay-Regular.otf</string>
+		<string>SFProDisplay-Medium.otf</string>
+		<string>SFProDisplay-Bold.otf</string>
+	</array>
 </dict>
 </plist>

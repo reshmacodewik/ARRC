@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   button: {
     width: wp(40),
-    height: hp(6),
+    height: 52,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -24,7 +24,7 @@ export default StyleSheet.create({
   text: {
     fontSize: hp(2),
     color: '#1A1A1A',
-    fontFamily: FONTS.semiBold,
+    fontFamily: FONTS.pmedium,
   },
   disabled: {
     opacity: 0.5,

@@ -27,7 +27,7 @@ const WelcomeScreen = ({ navigation }: any) => {
         <View style={styles.buttonContainer}>
           <Button
             title="Get Started"
-            onPress={() => navigation.navigate('Login')}
+            onPress={() => navigation.navigate('MobileNumber')}
           />
         </View>
       </View>
