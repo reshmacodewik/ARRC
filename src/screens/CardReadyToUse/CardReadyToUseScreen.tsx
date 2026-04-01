@@ -13,12 +13,10 @@ import Button from '../../components/Button/Button';
 import { wp } from '../../utils/responsive';
 
 const CardReadyToUseScreen = ({ navigation }: any) => {
-
   const handleStartCollecting = () => {
-
+    navigation.navigate('Home');
     console.log("Card is ready. Transitioning to app main...");
   };
-
   return (
     <ImageBackground
       source={IMAGES.splashBg}
@@ -59,7 +57,6 @@ const CardReadyToUseScreen = ({ navigation }: any) => {
             style={{ width: wp(75) }}
           />
         </View>
-
       </View>
     </ImageBackground>
   );

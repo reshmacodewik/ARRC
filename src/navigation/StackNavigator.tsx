@@ -10,6 +10,7 @@ import IdVerificationScreen from '../screens/Verification/Id Verfication/IdVerif
 import FaceVerificationScreen from '../screens/Verification/Face verfication/FaceVerificationScreen';
 import LinkAccountScreen from '../screens/LinkAccount/LinkAccountScreen';
 import CardReadyToUseScreen from '../screens/CardReadyToUse/CardReadyToUseScreen';
+import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ const StackNavigator = () => {
         <Stack.Screen name='FaceVerificationScreen' component={FaceVerificationScreen} />
         <Stack.Screen name='LinkAccount' component={LinkAccountScreen} />
         <Stack.Screen name='CardReadyToUse' component={CardReadyToUseScreen} />
+        <Stack.Screen name="Home" component={TabNavigator} />
 
       </Stack.Navigator>
     </NavigationContainer>

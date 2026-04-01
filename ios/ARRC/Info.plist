@@ -62,6 +62,8 @@
 		<string>SFProDisplay-Regular.otf</string>
 		<string>SFProDisplay-Medium.otf</string>
 		<string>SFProDisplay-Bold.otf</string>
+		<string>Ionicons.ttf</string>
+		<string>Feather.ttf</string>
 	</array>
 </dict>
 </plist>

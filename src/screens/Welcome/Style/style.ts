@@ -22,7 +22,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   backCard: {
     position: 'absolute',
     width: wp(85),
@@ -48,7 +47,7 @@ export default StyleSheet.create({
     resizeMode: 'contain',
     alignSelf: 'center',
     marginTop: hp(8),
-  },
+  },        
   title: {
     fontSize: 36,
     color: COLORS.white,
