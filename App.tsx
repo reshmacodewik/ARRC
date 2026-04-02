@@ -14,7 +14,7 @@ function App() {
         resizeMode="cover"
         style={{ flex: 1 }}
       >
-        <SafeAreaView style={{ flex: 1 }} >
+        <SafeAreaView style={{ flex: 1 }} edges={['top']} >
           <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
           <StackNavigator />
         </SafeAreaView>

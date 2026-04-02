@@ -11,14 +11,12 @@ const Header = () => {
       <Image source={IMAGES.logo} style={styles.logo} />
       <View style={styles.headerRight}>
         <Icon name="notifications-outline" size={24} color={COLORS.white} />
-        <View style={[styles.avatar, { backgroundColor: COLORS.textSecondary, alignItems: 'center', justifyContent: 'center' }]}>
-          <Icon name="person" size={20} color={COLORS.white} />
+        <View style={[styles.avatar, { overflow: 'hidden' }]}>
+          <Image source={{ uri: 'https://i.pravatar.cc/150?img=11' }} style={{ width: '100%', height: '100%' }} />
         </View>
       </View>
     </View>
   );
 };
-
-
 
 export default Header;

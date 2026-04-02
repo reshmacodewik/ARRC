@@ -10,4 +10,5 @@ export const IMAGES = {
   faceIcon: require('../assets/images/Face ID Symbol.png'),
   blackCardTilted: require('../assets/images/Vector 19.png'),
   crownCardTilted: require('../assets/images/Group 6.png'),
+  chipIcon: require('../assets/images/Chip.png'),
 };
