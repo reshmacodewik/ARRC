@@ -162,8 +162,8 @@ const styles = StyleSheet.create({
 
   fieldLabel: {
     color: COLORS.textSecondary,
-    fontSize: 13,
-    fontWeight: '500',
+    fontSize: 20,
+    fontWeight: '400',
     marginTop: SPACING.md,
     marginBottom: SPACING.xs,
     marginLeft: 2,

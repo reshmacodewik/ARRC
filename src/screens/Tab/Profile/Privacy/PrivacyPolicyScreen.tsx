@@ -29,8 +29,12 @@ const PrivacyPolicyScreen: React.FC = ({ navigation }: any) => {
       style={styles.safeArea}
       resizeMode="cover"
     >
-    <Header/>
-      <HeaderBack showBack title='Privacy Policy'   onBackPress={() => navigation.goBack()}/>
+      <Header />
+      <HeaderBack
+        showBack
+        title="Privacy Policy"
+        onBackPress={() => navigation.goBack()}
+      />
 
       <ScrollView
         contentContainerStyle={styles.policyScrollContent}
