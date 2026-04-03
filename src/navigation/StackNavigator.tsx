@@ -11,6 +11,12 @@ import FaceVerificationScreen from '../screens/Verification/Face verfication/Fac
 import LinkAccountScreen from '../screens/LinkAccount/LinkAccountScreen';
 import CardReadyToUseScreen from '../screens/CardReadyToUse/CardReadyToUseScreen';
 import TabNavigator from './TabNavigator';
+import RewardEarnedScreen from '../screens/RewardEarned/RewardEarnedScreen';
+import TransitionRewardScreen from '../screens/TransitionReward/TransitionRewardScreen';
+import BoostedOffersScreen from '../screens/BoostedOffers/BoostedOffersScreen';
+import PrivacyPolicyScreen from '../screens/Tab/Profile/Privacy/PrivacyPolicyScreen';
+import TermsConditionScreen from '../screens/Tab/Profile/Terms/TermsConditionScreen';
+import EditProfileScreen from '../screens/Tab/Profile/EditProfileScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,7 +38,12 @@ const StackNavigator = () => {
         <Stack.Screen name='LinkAccount' component={LinkAccountScreen} />
         <Stack.Screen name='CardReadyToUse' component={CardReadyToUseScreen} />
         <Stack.Screen name="Home" component={TabNavigator} />
-
+        <Stack.Screen name='RewardEarned' component={RewardEarnedScreen} />
+        <Stack.Screen name='TransitionReward' component={TransitionRewardScreen} />
+        <Stack.Screen name='BoostedOffers' component={BoostedOffersScreen} />
+        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen}/>
+        <Stack.Screen name='TermsConditions' component={TermsConditionScreen}/>
+        <Stack.Screen name="EditProfile" component={EditProfileScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

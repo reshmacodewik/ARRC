@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 30,
+
     },
     logo: {
         width: 85,

@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/Home/HomeScreen';
 import { COLORS } from '../constants/colors';
 import Feather from 'react-native-vector-icons/Feather';
+import ProfileScreen from '../screens/Tab/Profile/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -97,7 +98,7 @@ const TabNavigator = () => {
       <Tab.Screen name="HomeTab" component={HomeScreen} />
       <Tab.Screen name="Card" component={PlaceholderScreen} />
       <Tab.Screen name="Education" component={PlaceholderScreen} />
-      <Tab.Screen name="Account" component={PlaceholderScreen} />
+      <Tab.Screen name="Account" component={ProfileScreen} />
     </Tab.Navigator>
   );
 };

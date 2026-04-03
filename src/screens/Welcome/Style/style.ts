@@ -47,7 +47,7 @@ export default StyleSheet.create({
     resizeMode: 'contain',
     alignSelf: 'center',
     marginTop: hp(8),
-  },        
+  },
   title: {
     fontSize: 36,
     color: COLORS.white,

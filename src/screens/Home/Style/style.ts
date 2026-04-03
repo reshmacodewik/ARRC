@@ -4,8 +4,6 @@ import { COLORS } from '../../../constants/colors';
 export const styles = StyleSheet.create({
   background: {
     flex: 1,
-
-
   },
   container: {
     flex: 1,
@@ -13,7 +11,6 @@ export const styles = StyleSheet.create({
   contentContainer: {
     paddingHorizontal: 20,
     paddingBottom: 40,
-
   },
   greetingContainer: {
     marginBottom: 20,
@@ -138,24 +135,19 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   summaryButtonInner: {
-
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 50,
-    borderRadius: 12,
-
-  },
-  summaryButtonInners: {
     paddingVertical: 12,
     alignItems: 'center',
     borderRadius: 12,
-    height: 80
-
+  },
+  summaryButtonInners: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 12,
+    height: 60,
   },
   buttonTitle: {
     fontSize: 12,
     fontWeight: '600',
-
   },
   buttonValueRow: {
     flexDirection: 'row',
@@ -195,7 +187,30 @@ export const styles = StyleSheet.create({
     paddingTop: 25,
     justifyContent: 'space-between',
     backgroundColor: '#2C241F',
-
+  },
+  stripe: {
+    height: 36,
+    marginHorizontal: -20,
+    marginTop: 8,
+    marginBottom: 16,
+  },
+  detailsRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    marginTop: 'auto' as any,
+    flex: 1,
+  },
+  label: {
+    color: COLORS.white,
+    fontSize: 10,
+    fontWeight: '600',
+    letterSpacing: 1,
+    marginBottom: 2,
+  },
+  value: {
+    color: '#ffffff',
+    fontSize: 14,
+    fontWeight: '600',
   },
   cardHeader: {
     flexDirection: 'row',
@@ -251,23 +266,28 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 2,
   },
+
   paginationDotsContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 15,
-    gap: 6,
-  },
-  paginationDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: COLORS.goldGradientEnd,
-  },
-  paginationDotInactive: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    marginTop: 10,
   },
 
+  paginationDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginHorizontal: 4,
+  },
+
+  paginationDotActive: {
+    backgroundColor: COLORS.goldGradientStart,
+  },
+
+  paginationDotInactive: {
+    backgroundColor: '#ccc',
+  },
   rewardSection: {
     marginBottom: 30,
   },
@@ -289,13 +309,13 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
     width: 170,
     marginTop: 5,
-    height: 50
+    height: 50,
   },
   nextGoalText: {
     color: COLORS.black,
     fontSize: 16,
     fontWeight: 'bold',
-    marginLeft: 10
+    marginLeft: 10,
   },
   rewardBoxInner: {
     flexDirection: 'row',
@@ -317,7 +337,12 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'center',
     borderRadius: 12,
-
+  },
+  rewardButtonInners: {
+    paddingVertical: 10,
+    alignItems: 'center',
+    height: 65,
+    borderRadius: 12,
   },
   rewardRightCol: {
     alignItems: 'center',
@@ -337,7 +362,10 @@ export const styles = StyleSheet.create({
   },
   progressCircleStroke: {
     position: 'absolute',
-    top: -6, left: -6, right: -6, bottom: -6,
+    top: -6,
+    left: -6,
+    right: -6,
+    bottom: -6,
     borderWidth: 6,
     borderColor: COLORS.goldGradientStart,
     borderRadius: 46,
@@ -364,23 +392,20 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   successIcon: {
     width: 20,
     height: 20,
-    borderRadius: 10,
-    backgroundColor: '#4CAF50',
+
     alignItems: 'center',
     justifyContent: 'center',
   },
   rewardSuccessMessage: {
     color: COLORS.white,
     fontSize: 15,
-    fontFamily: 'SFProDisplay-Medium'
+    fontFamily: 'SFProDisplay-Medium',
   },
-
-  // Recent Transactions
   transactionsSection: {
     marginBottom: 30,
   },
@@ -418,7 +443,7 @@ export const styles = StyleSheet.create({
     color: COLORS.textSecondary,
     fontSize: 12,
     fontFamily: 'SFProDisplay-Regular',
-    fontWeight: '200'
+    fontWeight: '200',
   },
   transactionRight: {
     alignItems: 'flex-end',
@@ -441,8 +466,6 @@ export const styles = StyleSheet.create({
     color: COLORS.textSecondary,
     fontSize: 10,
   },
-
-  // Transition & Reward Section
   transitionSection: {
     marginBottom: 30,
   },
@@ -452,6 +475,18 @@ export const styles = StyleSheet.create({
     borderColor: 'rgba(196,156,81,0.2)',
     padding: 20,
     backgroundColor: '#0A0A0A',
+  },
+  gradientBorder: {
+    borderRadius: 20,
+    padding: 1,
+    marginTop: 10,
+  },
+
+  glassContainer: {
+    borderRadius: 20,
+    overflow: 'hidden',
+
+    padding: 15,
   },
   barChartContainer: {
     flexDirection: 'row',
@@ -517,14 +552,13 @@ export const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: '#302922',
     marginRight: 12,
-    marginTop: -30
+    marginTop: -30,
   },
   offerLogoImage: {
     width: 50,
     height: 50,
     borderRadius: 25,
     resizeMode: 'cover',
-
   },
   offerTextContent: {
     flex: 1,

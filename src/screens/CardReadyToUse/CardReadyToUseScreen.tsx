@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-} from 'react-native';
-
+import { View, Text, ImageBackground, Image } from 'react-native';
 
 import styles from './Style/style';
 import { IMAGES } from '../../constants/images';
@@ -15,7 +9,7 @@ import { wp } from '../../utils/responsive';
 const CardReadyToUseScreen = ({ navigation }: any) => {
   const handleStartCollecting = () => {
     navigation.navigate('Home');
-    console.log("Card is ready. Transitioning to app main...");
+    console.log('Card is ready. Transitioning to app main...');
   };
   return (
     <ImageBackground
@@ -35,8 +29,6 @@ const CardReadyToUseScreen = ({ navigation }: any) => {
             IS READY TO USE
           </Text>
         </View>
-
-
         <View style={styles.cardsContainer}>
           <Image
             source={IMAGES.blackCardTilted}

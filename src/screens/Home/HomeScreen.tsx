@@ -1,31 +1,108 @@
-import React from 'react';
-import { View, Text, ScrollView, Image, TouchableOpacity, StyleSheet, FlatList, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+  ImageBackground,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Svg, Path, Defs, LinearGradient as SvgLinearGradient, Stop } from 'react-native-svg';
+import {
+  Svg,
+  Path,
+  Defs,
+  LinearGradient as SvgLinearGradient,
+  Stop,
+} from 'react-native-svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BlurView } from '@react-native-community/blur';
 import Header from '../../components/Header/Header';
 import { styles } from './Style/style';
 import { IMAGES } from '../../constants/images';
 import { COLORS } from '../../constants/colors';
-
+import FlipCard from '../../components/FlipCard/Flipcard';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
   const insets = useSafeAreaInsets();
-
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [flippedCards, setFlippedCards] = useState<{ [key: string]: boolean }>(
+    {},
+  );
+  const toggleFlip = (cardId: string) => {
+    setFlippedCards(prev => ({ ...prev, [cardId]: !prev[cardId] }));
+  };
+  const navigation = useNavigation();
   const dummyCards = [
-    { id: '1', holderName: 'Alex Amiri', image: IMAGES.cardBrown },
-    { id: '2', holderName: 'Alex Amiri', image: IMAGES.CARDBLACK },
+    {
+      id: '1',
+      holderName: 'Alex Amiri',
+      image: IMAGES.cardBrown,
+      cardNumber: '2134 **** **** 2341',
+      expiry: '01/26',
+      cvv: '123',
+    },
+    {
+      id: '2',
+      holderName: 'Alex Amiri',
+      image: IMAGES.CARDBLACK,
+      cardNumber: '5678 **** **** 9012',
+      expiry: '03/27',
+      cvv: '456',
+    },
   ];
 
   const recentTransactions = [
-    { id: '1', title: 'Starbucks', subText: 'Coffee Purchase . March 18', amount: '$320', reward: '$15', iconLetter: 'S', isDarkBg: false },
-    { id: '2', title: 'Amazon', subText: 'Shopping . March 10', amount: '$320', reward: '$15', iconLetter: 'A', isDarkBg: true },
-    { id: '3', title: 'Dominoz Pizza', subText: 'Pizza . March 5', amount: '$320', reward: '$15', iconLetter: 'D', isDarkBg: true },
-    { id: '4', title: 'Flipkart', subText: 'Shopping . March 4', amount: '$320', reward: '$15', iconLetter: 'F', isDarkBg: true },
-    { id: '5', title: 'PVR Cinema', subText: 'Movie . March 2', amount: '$320', reward: '$15', iconLetter: 'P', isDarkBg: true },
+    {
+      id: '1',
+      title: 'Starbucks',
+      subText: 'Coffee Purchase . March 18',
+      amount: '$320',
+      reward: '$15',
+      iconLetter: 'S',
+      isDarkBg: false,
+    },
+    {
+      id: '2',
+      title: 'Amazon',
+      subText: 'Shopping . March 10',
+      amount: '$320',
+      reward: '$15',
+      iconLetter: 'A',
+      isDarkBg: true,
+    },
+    {
+      id: '3',
+      title: 'Dominoz Pizza',
+      subText: 'Pizza . March 5',
+      amount: '$320',
+      reward: '$15',
+      iconLetter: 'D',
+      isDarkBg: true,
+    },
+    {
+      id: '4',
+      title: 'Flipkart',
+      subText: 'Shopping . March 4',
+      amount: '$320',
+      reward: '$15',
+      iconLetter: 'F',
+      isDarkBg: true,
+    },
+    {
+      id: '5',
+      title: 'PVR Cinema',
+      subText: 'Movie . March 2',
+      amount: '$320',
+      reward: '$15',
+      iconLetter: 'P',
+      isDarkBg: true,
+    },
   ];
 
   const transitionData = [
@@ -36,57 +113,23 @@ const HomeScreen = () => {
     { label: 'Others', height: 25 },
   ];
 
-
   const renderCard = ({ item }: any) => (
-    <View style={styles.cardItem}>
-      <Image source={item.image} style={[StyleSheet.absoluteFill, { opacity: 0.2 }]} resizeMode="cover" />
-
-      <View style={styles.cardHeader}>
-        <Text style={styles.cardTitle}>{item.holderName}</Text>
-        <View style={styles.cardActionsIcons}>
-          <Icon name="sync-outline" size={16} color="rgba(255,255,255,0.8)" />
-          <Icon name="chevron-forward" size={16} color="rgba(255,255,255,0.8)" />
-        </View>
-      </View>
-
-      <Image source={IMAGES.chipIcon} style={styles.chipIconWrapper} />
-
-      <View style={styles.cardBottomRow}>
-        <View style={styles.cardActionBtnsRow}>
-          <TouchableOpacity style={styles.cardActionBtn}>
-            <View style={styles.cardActionIconCircle}>
-              <Icon name="add" size={16} color="rgba(255,255,255,0.8)" />
-            </View>
-            <Text style={styles.cardActionBtnText}>Fund Card</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.cardActionBtn}>
-            <View style={styles.cardActionIconCircle}>
-              <Icon name="paper-plane-outline" size={14} color="rgba(255,255,255,0.8)" />
-            </View>
-            <Text style={styles.cardActionBtnText}>Transfer Money</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.cardActionBtn}>
-            <View style={styles.cardActionIconCircle}>
-              <Icon name="lock-closed-outline" size={14} color="rgba(255,255,255,0.8)" />
-            </View>
-            <Text style={styles.cardActionBtnText}>Lock Card</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.cardActionBtn}>
-            <View style={styles.cardActionIconCircle}>
-              <Icon name="refresh-outline" size={14} color="rgba(255,255,255,0.8)" />
-            </View>
-            <Text style={styles.cardActionBtnText}>Replace Card</Text>
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.arrcLogoText}>ARRC</Text>
-      </View>
-    </View>
+    <FlipCard
+      item={item}
+      isFlipped={flippedCards[item.id] || false}
+      onToggle={() => toggleFlip(item.id)}
+    />
   );
 
   const renderTransaction = (item: any) => (
     <View key={item.id} style={styles.transactionItem}>
       <View style={styles.transactionLeft}>
-        <View style={[styles.transactionAvatarCircle, { backgroundColor: item.isDarkBg ? '#302922' : '#8A7A66' }]}>
+        <View
+          style={[
+            styles.transactionAvatarCircle,
+            { backgroundColor: item.isDarkBg ? '#302922' : '#8A7A66' },
+          ]}
+        >
           <Text style={styles.transactionAvatarText}>{item.iconLetter}</Text>
         </View>
         <View>
@@ -98,7 +141,12 @@ const HomeScreen = () => {
         <View style={styles.transactionAmountRow}>
           <Text style={styles.transactionAmount}>{item.amount}</Text>
         </View>
-        <Text style={styles.transactionRewardText}>Reward <Text style={{ color: COLORS.white, fontSize: 11 }}>{item.reward}</Text></Text>
+        <Text style={styles.transactionRewardText}>
+          Reward{' '}
+          <Text style={{ color: COLORS.white, fontSize: 11 }}>
+            {item.reward}
+          </Text>
+        </Text>
       </View>
     </View>
   );
@@ -109,8 +157,11 @@ const HomeScreen = () => {
       style={styles.background}
       resizeMode="cover"
     >
-      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer} showsVerticalScrollIndicator={false}>
-
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
+        showsVerticalScrollIndicator={false}
+      >
         <Header />
 
         <View style={styles.greetingContainer}>
@@ -132,11 +183,24 @@ const HomeScreen = () => {
             </View>
 
             <View style={StyleSheet.absoluteFill}>
-              <Svg height="100%" width="100%" viewBox="0 0 400 200" preserveAspectRatio="none">
+              <Svg
+                height="100%"
+                width="100%"
+                viewBox="0 0 400 200"
+                preserveAspectRatio="none"
+              >
                 <Defs>
                   <SvgLinearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
-                    <Stop offset="0" stopColor={COLORS.goldGradientStart} stopOpacity="1" />
-                    <Stop offset="1" stopColor={COLORS.goldGradientEnd} stopOpacity="0.1" />
+                    <Stop
+                      offset="0"
+                      stopColor={COLORS.goldGradientStart}
+                      stopOpacity="1"
+                    />
+                    <Stop
+                      offset="1"
+                      stopColor={COLORS.goldGradientEnd}
+                      stopOpacity="0.1"
+                    />
                   </SvgLinearGradient>
                 </Defs>
                 <Path
@@ -163,23 +227,34 @@ const HomeScreen = () => {
             <TouchableOpacity style={styles.summaryButton} activeOpacity={0.8}>
               <LinearGradient
                 colors={['#A88647', '#000000']}
-                style={styles.summaryButtonInner}
+                style={styles.summaryButtonInners}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
               >
-                <Text style={[styles.buttonTitle, { color: COLORS.white }]}>Current Value</Text>
+                <Text style={[styles.buttonTitle, { color: COLORS.white }]}>
+                  Current Value
+                </Text>
                 <View style={styles.buttonValueRow}>
-                  <Text style={[styles.buttonValue, { color: COLORS.white }]}>$300</Text>
+                  <Text style={[styles.buttonValue, { color: COLORS.white }]}>
+                    $300
+                  </Text>
                   <Icon name="eye-outline" size={14} color={COLORS.white} />
                 </View>
               </LinearGradient>
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.summaryButton, { backgroundColor: COLORS.white }]} activeOpacity={0.8}>
+            <TouchableOpacity
+              style={[styles.summaryButton, { backgroundColor: COLORS.white }]}
+              activeOpacity={0.8}
+            >
               <View style={styles.summaryButtonInner}>
-                <Text style={[styles.buttonTitle, { color: COLORS.black }]}>By Age 50</Text>
+                <Text style={[styles.buttonTitle, { color: COLORS.black }]}>
+                  By Age 50
+                </Text>
                 <View style={styles.buttonValueRow}>
-                  <Text style={[styles.buttonValue, { color: COLORS.black }]}>$300</Text>
+                  <Text style={[styles.buttonValue, { color: COLORS.black }]}>
+                    $300
+                  </Text>
                   <Icon name="eye-outline" size={14} color={COLORS.black} />
                 </View>
               </View>
@@ -187,9 +262,22 @@ const HomeScreen = () => {
           </View>
         </View>
 
-        <View style={{ borderTopLeftRadius: 20, borderTopRightRadius: 20, borderTopWidth: 1, borderColor: COLORS.white, backgroundColor: COLORS.black, marginHorizontal: -20, padding: 20 }}>
+        <View
+          style={{
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+            borderTopWidth: 1.5,
+
+            borderColor: COLORS.white,
+            backgroundColor: COLORS.black,
+            marginHorizontal: -20,
+            padding: 20,
+          }}
+        >
           <View style={styles.cardsSection}>
-            <Text style={styles.sectionTitle}>Your Virtual Arrc Debit Cards</Text>
+            <Text style={styles.sectionTitle}>
+              Your Virtual Arrc Debit Cards
+            </Text>
             <FlatList
               data={dummyCards}
               renderItem={renderCard}
@@ -197,59 +285,129 @@ const HomeScreen = () => {
               horizontal
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.cardsScroll}
+              onScroll={event => {
+                const slideSize = event.nativeEvent.layoutMeasurement.width;
+                const index = event.nativeEvent.contentOffset.x / slideSize;
+                const roundIndex = Math.round(index);
+                setActiveIndex(roundIndex);
+              }}
+              scrollEventThrottle={16}
+              pagingEnabled
             />
             <View style={styles.paginationDotsContainer}>
-              <View style={[styles.paginationDot]} />
-              <View style={[styles.paginationDot, styles.paginationDotInactive]} />
-              <View style={[styles.paginationDot, styles.paginationDotInactive]} />
+              {dummyCards.map((_, index) => (
+                <View
+                  key={index}
+                  style={[
+                    styles.paginationDot,
+                    activeIndex === index
+                      ? styles.paginationDotActive
+                      : styles.paginationDotInactive,
+                  ]}
+                />
+              ))}
             </View>
           </View>
           <View style={styles.rewardSection}>
             <View style={styles.sectionHeaderCentered}>
-              <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>Reward Earned</Text>
-              <Icon name="chevron-forward-circle" size={24} color="#C49C51" />
+              <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>
+                Reward Earned
+              </Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('RewardEarned' as never)}
+              >
+                <View
+                  style={{
+                    backgroundColor: COLORS.goldGradientStart,
+                    borderRadius: 50,
+                    padding: 5,
+                  }}
+                >
+                  <Icon name="chevron-forward" size={20} color={COLORS.white} />
+                </View>
+              </TouchableOpacity>
             </View>
 
             <LinearGradient
-              colors={['#000000', '#BE9748',]}
-              start={{ x: 0, y: 1 }}
-              end={{ x: 0, y: 0 }}
+              colors={['#BE9748', '#000000']}
               style={styles.rewardBoxGradientBorder}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 1 }}
             >
               <View style={styles.rewardBox}>
-
-
                 <LinearGradient
                   colors={['#F9EDB4', '#C49C51']}
                   style={styles.nextGoalTag}
-                  start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
                 >
-                  <Text style={styles.nextGoalText}>Next Goal <Text style={{ fontWeight: '400' }}>$500</Text></Text>
+                  <Text style={styles.nextGoalText}>
+                    Next Goal <Text style={{ fontWeight: '400' }}>$500</Text>
+                  </Text>
                 </LinearGradient>
 
                 <View style={styles.rewardBoxInner}>
                   <View style={styles.rewardLeftCol}>
-                    <TouchableOpacity style={styles.rewardButton} activeOpacity={0.8}>
+                    <TouchableOpacity
+                      style={styles.rewardButton}
+                      activeOpacity={0.8}
+                    >
                       <LinearGradient
-                        colors={['#A88647', '#342617']}
-                        style={styles.rewardButtonInner}
+                        colors={['#A88647', '#000000']}
+                        style={styles.rewardButtonInners}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 0, y: 1 }}
                       >
-                        <Text style={[styles.buttonTitle, { color: COLORS.white }]}>This Month</Text>
+                        <Text
+                          style={[styles.buttonTitle, { color: COLORS.white }]}
+                        >
+                          This Month
+                        </Text>
                         <View style={styles.buttonValueRow}>
-                          <Text style={[styles.buttonValue, { color: COLORS.white }]}>$300</Text>
-                          <Icon name="eye-outline" size={14} color={COLORS.white} />
+                          <Text
+                            style={[
+                              styles.buttonValue,
+                              { color: COLORS.white },
+                            ]}
+                          >
+                            $300
+                          </Text>
+                          <Icon
+                            name="eye-outline"
+                            size={14}
+                            color={COLORS.white}
+                          />
                         </View>
                       </LinearGradient>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={[styles.rewardButton, { backgroundColor: COLORS.white }]} activeOpacity={0.8}>
+                    <TouchableOpacity
+                      style={[
+                        styles.rewardButton,
+                        { backgroundColor: COLORS.white },
+                      ]}
+                      activeOpacity={0.8}
+                    >
                       <View style={styles.rewardButtonInner}>
-                        <Text style={[styles.buttonTitle, { color: COLORS.black }]}>Year To Date</Text>
+                        <Text
+                          style={[styles.buttonTitle, { color: COLORS.black }]}
+                        >
+                          Year To Date
+                        </Text>
                         <View style={styles.buttonValueRow}>
-                          <Text style={[styles.buttonValue, { color: COLORS.black }]}>$300</Text>
-                          <Icon name="eye-outline" size={14} color={COLORS.black} />
+                          <Text
+                            style={[
+                              styles.buttonValue,
+                              { color: COLORS.black },
+                            ]}
+                          >
+                            $300
+                          </Text>
+                          <Icon
+                            name="eye-outline"
+                            size={14}
+                            color={COLORS.black}
+                          />
                         </View>
                       </View>
                     </TouchableOpacity>
@@ -267,87 +425,148 @@ const HomeScreen = () => {
 
                 <View style={styles.rewardSuccessMessageRow}>
                   <View style={styles.successIcon}>
-                    <Icon name="checkmark" size={14} color={COLORS.white} />
+                 <Image source={IMAGES.CheckIcon} style={{width:20,height:20}}/>
                   </View>
-                  <Text style={styles.rewardSuccessMessage}>Yayy !! You Earned $30 This Month</Text>
+                  <Text style={styles.rewardSuccessMessage}>
+                    Yayy !! You Earned $30 This Month
+                  </Text>
                 </View>
               </View>
             </LinearGradient>
           </View>
           <View style={styles.transactionsSection}>
             <View style={styles.sectionHeaderCentered}>
-              <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>Recent Transactions</Text>
-              <View style={{ backgroundColor: COLORS.goldGradientStart, borderRadius: 50, padding: 5 }}>
+              <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>
+                Recent Transactions
+              </Text>
+              <View
+                style={{
+                  backgroundColor: COLORS.goldGradientStart,
+                  borderRadius: 50,
+                  padding: 5,
+                }}
+              >
                 <Icon name="chevron-forward" size={20} color={COLORS.white} />
               </View>
             </View>
 
-            <View>
-              {recentTransactions.map(renderTransaction)}
-            </View>
+            <View>{recentTransactions.map(renderTransaction)}</View>
           </View>
 
-          {/* Transition & Reward Section */}
           <View style={styles.transitionSection}>
             <View style={styles.sectionHeaderCentered}>
-              <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>Transition & Reward</Text>
-              <View style={{ backgroundColor: COLORS.goldGradientStart, borderRadius: 50, padding: 5 }}>
-                <Icon name="chevron-forward" size={20} color={COLORS.white} />
-              </View>
-
+              <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>
+                Transition & Reward
+              </Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('TransitionReward' as never)}
+              >
+                <View
+                  style={{
+                    backgroundColor: COLORS.goldGradientStart,
+                    borderRadius: 50,
+                    padding: 5,
+                  }}
+                >
+                  <Icon name="chevron-forward" size={20} color="#111" />
+                </View>
+              </TouchableOpacity>
             </View>
+            <LinearGradient
+              colors={['#000000', '#C49C51', '#C49C51', '#000000']}
+              locations={[0, 0.3, 0.7, 1]}
+              start={{ x: 0.5, y: 0 }} // top center → black
+              end={{ x: 0.5, y: 1 }} // bottom center → gold
+              style={{
+                borderRadius: 20,
+                padding: 1,
+              }}
+            >
+              <View
+                style={[
+                  styles.transitionBox,
+                  {
+                    borderRadius: 19, // slightly less than outer to fit inside
+                    backgroundColor: '#000000', // or your card background color
+                    overflow: 'hidden',
+                  },
+                ]}
+              >
+                <View style={styles.barChartContainer}>
+                  {transitionData.map((item, index) => (
+                    <View key={index} style={styles.barCol}>
+                      <LinearGradient
+                        colors={['#C49C51', '#F9EDB4']}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 0, y: 1 }}
+                        style={[styles.bar, { height: item.height }]}
+                      />
+                      <Text style={styles.barLabel}>{item.label}</Text>
+                    </View>
+                  ))}
+                </View>
 
-            <View style={styles.transitionBox}>
-              <View style={styles.barChartContainer}>
-                {transitionData.map((item, index) => (
-                  <View key={index} style={styles.barCol}>
+                <View style={styles.summaryButtonsContainer}>
+                  <TouchableOpacity
+                    style={styles.summaryButton}
+                    activeOpacity={0.8}
+                  >
                     <LinearGradient
-                      colors={['#C49C51', '#F9EDB4']}
+                      colors={['#A88647', '#130e09']}
+                      style={styles.summaryButtonInners}
                       start={{ x: 0, y: 0 }}
                       end={{ x: 0, y: 1 }}
-                      style={[styles.bar, { height: item.height }]}
-                    />
-                    <Text style={styles.barLabel}>{item.label}</Text>
-                  </View>
-                ))}
-              </View>
+                    >
+                      <Text style={[styles.buttonTitle, { color: '#fff' }]}>
+                        This Month Spend
+                      </Text>
+                      <View style={styles.buttonValueRow}>
+                        <Text style={[styles.buttonValue, { color: '#fff' }]}>
+                          $300
+                        </Text>
+                        <Icon name="eye-outline" size={14} color="#fff" />
+                      </View>
+                    </LinearGradient>
+                  </TouchableOpacity>
 
-              <View style={styles.summaryButtonsContainer}>
-                <TouchableOpacity style={styles.summaryButton} activeOpacity={0.8}>
-                  <LinearGradient
-                    colors={['#A88647', '#130e09ff']}
-                    style={styles.summaryButtonInners}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 0, y: 1 }}
+                  <TouchableOpacity
+                    style={[styles.summaryButton, { backgroundColor: '#fff' }]}
+                    activeOpacity={0.8}
                   >
-                    <Text style={[styles.buttonTitle, { color: COLORS.white }]}>This Month Spend</Text>
-                    <View style={styles.buttonValueRow}>
-                      <Text style={[styles.buttonValue, { color: COLORS.white }]}>$300</Text>
-                      <Icon name="eye-outline" size={14} color={COLORS.white} />
+                    <View style={styles.summaryButtonInners}>
+                      <Text style={[styles.buttonTitle, { color: '#000' }]}>
+                        Reward Earned
+                      </Text>
+                      <View style={styles.buttonValueRow}>
+                        <Text style={[styles.buttonValue, { color: '#000' }]}>
+                          $300
+                        </Text>
+                        <Icon name="eye-outline" size={14} color="#000" />
+                      </View>
                     </View>
-                  </LinearGradient>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={[styles.summaryButton, { backgroundColor: COLORS.white }]} activeOpacity={0.8}>
-                  <View style={styles.summaryButtonInner}>
-                    <Text style={[styles.buttonTitle, { color: COLORS.black }]}>Reward Earned</Text>
-                    <View style={styles.buttonValueRow}>
-                      <Text style={[styles.buttonValue, { color: COLORS.black }]}>$300</Text>
-                      <Icon name="eye-outline" size={14} color={COLORS.black} />
-                    </View>
-                  </View>
-                </TouchableOpacity>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
+            </LinearGradient>
           </View>
 
           {/* Boosted Offers Section */}
           <View style={styles.offersSection}>
             <View style={styles.sectionHeaderCentered}>
-              <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>Boosted Offers</Text>
-              <View style={{ backgroundColor: COLORS.goldGradientStart, borderRadius: 50, padding: 5 }}>
+              <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>
+                Boosted Offers
+              </Text>
+              <TouchableOpacity onPress={()=> navigation.navigate('BoostedOffers' as never)}>
+              <View
+                style={{
+                  backgroundColor: COLORS.goldGradientStart,
+                  borderRadius: 50,
+                  padding: 5,
+                }}
+              >
                 <Icon name="chevron-forward" size={20} color={COLORS.white} />
               </View>
+              </TouchableOpacity>
             </View>
 
             <View style={styles.offerCardRow}>
@@ -356,26 +575,28 @@ const HomeScreen = () => {
                 <View style={styles.offerCardCircleBg2} />
 
                 <View style={styles.offerLogoCircle}>
-
-                  <Image source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png' }} style={styles.offerLogoImage} />
+                  <Image
+                    source={{
+                      uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/1200px-Starbucks_Corporation_Logo_2011.svg.png',
+                    }}
+                    style={styles.offerLogoImage}
+                  />
                 </View>
 
                 <View style={styles.offerTextContent}>
-                  <Text style={styles.offerTitle}>Earned +2% Extra  at {'\n'}Starbucks</Text>
+                  <Text style={styles.offerTitle}>
+                    Earned +2% Extra at {'\n'}Starbucks
+                  </Text>
                   <TouchableOpacity style={styles.offerBtn}>
                     <Text style={styles.offerBtnText}>Get Rewards</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             </View>
-
           </View>
         </View>
-
-
       </ScrollView>
     </ImageBackground>
   );
 };
-
 export default HomeScreen;

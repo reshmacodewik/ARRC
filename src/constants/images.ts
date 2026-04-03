@@ -11,4 +11,11 @@ export const IMAGES = {
   blackCardTilted: require('../assets/images/Vector 19.png'),
   crownCardTilted: require('../assets/images/Group 6.png'),
   chipIcon: require('../assets/images/Chip.png'),
+  RepeatIcon: require('../assets/images/repeat.png'),
+  StarBucksLogo: require('../assets/images/Starbucks.png'),
+  AmazonLogo: require('../assets/images/amazon.png'),
+  DominozLogo: require('../assets/images/Pizza.png'),
+  NikeLogo: require('../assets/images/Nike.png'),
+  CheckIcon: require('../assets/images/check-circle.png'),
+  
 };
