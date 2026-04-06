@@ -334,14 +334,14 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   rewardButtonInner: {
-    paddingVertical: 10,
+    paddingVertical: 15,
     alignItems: 'center',
     borderRadius: 12,
   },
   rewardButtonInners: {
     paddingVertical: 10,
     alignItems: 'center',
-    height: 65,
+    height: 70,
     borderRadius: 12,
   },
   rewardRightCol: {

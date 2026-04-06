@@ -1,28 +1,16 @@
 import { StyleSheet } from 'react-native';
-
-// ── Design Tokens ─────────────────────────────────────────────────────────────
+import { SPACING } from '../../../constants/spacing';
 export const COLORS = {
-  primary:           '#F9EDB4',
+  primary: '#F9EDB4',
   goldGradientStart: '#C49C51',
-  goldGradientEnd:   '#C2984C',
-  black:             '#000000',
-  background:        '#0A0A0A',
-  white:             '#FFFFFF',
-  textSecondary:     '#A1A1A1',
+  goldGradientEnd: '#C2984C',
+  black: '#000000',
+  background: '#0A0A0A',
+  white: '#FFFFFF',
+  textSecondary: '#A1A1A1',
 };
 
-export const SPACING = {
-  xs:  4,
-  sm:  8,
-  md:  16,
-  lg:  24,
-  xl:  32,
-};
-
-// ── Styles ────────────────────────────────────────────────────────────────────
 const styles = StyleSheet.create({
-
-  // ── Layout ──────────────────────────────────────────────────────────────────
   safeArea: {
     flex: 1,
     backgroundColor: COLORS.background,
@@ -33,7 +21,6 @@ const styles = StyleSheet.create({
     paddingBottom: SPACING.xl,
   },
 
-  // ── Top Bar ─────────────────────────────────────────────────────────────────
   topBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -138,7 +125,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: -5,
     right: '39%',
-   
   },
 
   editIconGradient: {
@@ -155,7 +141,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 
-  // ── Form Fields ──────────────────────────────────────────────────────────────
+
   form: {
     gap: SPACING.xs,
   },
@@ -173,7 +159,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     borderRadius: 30,
     paddingHorizontal: SPACING.md,
-    height:60,
+    height: 60,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -214,7 +200,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 
-
   saveButtonWrapper: {
     marginHorizontal: SPACING.md,
     marginTop: SPACING.lg,
@@ -226,9 +211,9 @@ const styles = StyleSheet.create({
 
     alignItems: 'center',
     justifyContent: 'center',
-    height:50,
-    width:180,
-    alignSelf:'center'
+    height: 50,
+    width: 180,
+    alignSelf: 'center',
   },
 
   primaryBtnText: {

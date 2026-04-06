@@ -17,5 +17,7 @@ export const IMAGES = {
   DominozLogo: require('../assets/images/Pizza.png'),
   NikeLogo: require('../assets/images/Nike.png'),
   CheckIcon: require('../assets/images/check-circle.png'),
+  CHECKICON:require('../assets/images/Check.png'),
+  FilePlusIcon:require('../assets/images/file-plus.png')
   
 };

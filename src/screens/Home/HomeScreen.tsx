@@ -18,9 +18,9 @@ import {
   Defs,
   LinearGradient as SvgLinearGradient,
   Stop,
+  Circle,
 } from 'react-native-svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BlurView } from '@react-native-community/blur';
 import Header from '../../components/Header/Header';
 import { styles } from './Style/style';
 import { IMAGES } from '../../constants/images';
@@ -37,6 +37,14 @@ const HomeScreen = () => {
   const toggleFlip = (cardId: string) => {
     setFlippedCards(prev => ({ ...prev, [cardId]: !prev[cardId] }));
   };
+  const size = 110;
+  const strokeWidth = 15;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+
+  const progress = 100; // %
+
+  const strokeDashoffset = circumference - (circumference * progress) / 100;
   const navigation = useNavigation();
   const dummyCards = [
     {
@@ -414,18 +422,72 @@ const HomeScreen = () => {
                   </View>
 
                   <View style={styles.rewardRightCol}>
-                    <View style={styles.progressCircleContainer}>
-                      <View style={styles.progressCircleStroke} />
-                      <Text style={styles.progressTitle}>Next Goal</Text>
-                      <Text style={styles.progressValue}>22%</Text>
+                    <View
+                      style={{
+                        width: size,
+                        height: size,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Svg width={size} height={size}>
+                        <Defs>
+                          <SvgLinearGradient
+                            id="grad"
+                            x1="0"
+                            y1="0%"
+                            x2="100%"
+                            y2="0%"
+                          >
+                            <Stop offset="0%" stopColor="#F9EDB4" />
+                            <Stop offset="100%" stopColor="#BE9748" />
+                          </SvgLinearGradient>
+                        </Defs>
+
+                        <Circle
+                          stroke="#2A2A2A"
+                          fill="none"
+                          cx={size / 2}
+                          cy={size / 2}
+                          r={radius}
+                          strokeWidth={strokeWidth}
+                        />
+
+                        {/* Progress circle */}
+                        <Circle
+                          stroke="url(#grad)"
+                          fill="none"
+                          cx={size / 2}
+                          cy={size / 2}
+                          r={radius}
+                          strokeWidth={strokeWidth}
+                          strokeDasharray={circumference}
+                          strokeDashoffset={strokeDashoffset}
+                          strokeLinecap="round"
+                          rotation="-90"
+                          origin={`${size / 2}, ${size / 2}`}
+                        />
+                      </Svg>
+
+                      {/* Center Text */}
+                      <View
+                        style={{ position: 'absolute', alignItems: 'center' }}
+                      >
+                        <Text style={styles.progressTitle}>Next Goal</Text>
+                        <Text style={styles.progressValue}>22%</Text>
+                      </View>
                     </View>
+
                     <Text style={styles.completedText}>Completed</Text>
                   </View>
                 </View>
 
                 <View style={styles.rewardSuccessMessageRow}>
                   <View style={styles.successIcon}>
-                 <Image source={IMAGES.CheckIcon} style={{width:20,height:20}}/>
+                    <Image
+                      source={IMAGES.CheckIcon}
+                      style={{ width: 20, height: 20 }}
+                    />
                   </View>
                   <Text style={styles.rewardSuccessMessage}>
                     Yayy !! You Earned $30 This Month
@@ -468,15 +530,15 @@ const HomeScreen = () => {
                     padding: 5,
                   }}
                 >
-                  <Icon name="chevron-forward" size={20} color="#111" />
+                  <Icon name="chevron-forward" size={20} color="#fff" />
                 </View>
               </TouchableOpacity>
             </View>
             <LinearGradient
               colors={['#000000', '#C49C51', '#C49C51', '#000000']}
               locations={[0, 0.3, 0.7, 1]}
-              start={{ x: 0.5, y: 0 }} // top center → black
-              end={{ x: 0.5, y: 1 }} // bottom center → gold
+              start={{ x: 0.5, y: 0 }}
+              end={{ x: 0.5, y: 1 }}
               style={{
                 borderRadius: 20,
                 padding: 1,
@@ -486,8 +548,8 @@ const HomeScreen = () => {
                 style={[
                   styles.transitionBox,
                   {
-                    borderRadius: 19, // slightly less than outer to fit inside
-                    backgroundColor: '#000000', // or your card background color
+                    borderRadius: 19,
+                    backgroundColor: '#000000',
                     overflow: 'hidden',
                   },
                 ]}
@@ -556,16 +618,18 @@ const HomeScreen = () => {
               <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>
                 Boosted Offers
               </Text>
-              <TouchableOpacity onPress={()=> navigation.navigate('BoostedOffers' as never)}>
-              <View
-                style={{
-                  backgroundColor: COLORS.goldGradientStart,
-                  borderRadius: 50,
-                  padding: 5,
-                }}
+              <TouchableOpacity
+                onPress={() => navigation.navigate('BoostedOffers' as never)}
               >
-                <Icon name="chevron-forward" size={20} color={COLORS.white} />
-              </View>
+                <View
+                  style={{
+                    backgroundColor: COLORS.goldGradientStart,
+                    borderRadius: 50,
+                    padding: 5,
+                  }}
+                >
+                  <Icon name="chevron-forward" size={20} color={COLORS.white} />
+                </View>
               </TouchableOpacity>
             </View>
 

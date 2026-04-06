@@ -25,7 +25,6 @@ const MENU_ITEMS = [
 
 const ProfileScreen: React.FC = ({ navigation }: any) => {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
-
   const handleMenuPress = (id: string) => {
     switch (id) {
       case 'edit':
@@ -38,7 +37,7 @@ const ProfileScreen: React.FC = ({ navigation }: any) => {
         navigation?.navigate('TermsConditions');
         break;
       case 'support':
-        navigation?.navigate('SupportTicket');
+        navigation?.navigate('Support');
         break;
       case 'logout':
         break;
@@ -56,7 +55,7 @@ const ProfileScreen: React.FC = ({ navigation }: any) => {
         showsVerticalScrollIndicator={false}
       >
         <Header />
-        <HeaderBack showBack />
+        <HeaderBack showBack onBackPress={() => navigation.goBack()} />
         <View style={styles.profileSection}>
           <View style={styles.avatarWrapper}>
             <Image
@@ -100,7 +99,3 @@ const ProfileScreen: React.FC = ({ navigation }: any) => {
   );
 };
 export default ProfileScreen;
-
-
-
-

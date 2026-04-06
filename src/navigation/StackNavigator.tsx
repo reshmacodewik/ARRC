@@ -17,6 +17,10 @@ import BoostedOffersScreen from '../screens/BoostedOffers/BoostedOffersScreen';
 import PrivacyPolicyScreen from '../screens/Tab/Profile/Privacy/PrivacyPolicyScreen';
 import TermsConditionScreen from '../screens/Tab/Profile/Terms/TermsConditionScreen';
 import EditProfileScreen from '../screens/Tab/Profile/EditProfileScreen';
+import SupportScreen from '../screens/Tab/Profile/SupportTicket/SupportScreen';
+import SupportTicketListScreen from '../screens/Tab/Profile/SupportTicket/SupportTicketList/SupportTicketListScreen';
+import CreateSupportTicketScreen from '../screens/Tab/Profile/SupportTicket/CreateTicket/CreateSupportTicketScreen';
+import SupportTicketChatScreen from '../screens/Tab/Profile/SupportTicket/TicketChat/SupportTicketChatScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +48,10 @@ const StackNavigator = () => {
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen}/>
         <Stack.Screen name='TermsConditions' component={TermsConditionScreen}/>
         <Stack.Screen name="EditProfile" component={EditProfileScreen}/>
+        <Stack.Screen name="Support" component={SupportScreen}/>
+        <Stack.Screen name="SupportTicketList" component={SupportTicketListScreen}/>
+        <Stack.Screen name="CreateSupportTicket" component={CreateSupportTicketScreen} />
+        <Stack.Screen name="SupportTicketChat" component={SupportTicketChatScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
