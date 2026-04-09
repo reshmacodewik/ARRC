@@ -1,7 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { RADIUS, SPACING } from '../../constants/spacing';
-
-const { width } = Dimensions.get('window'); 
 const COLORS = {
   background:   '#0D0D0D',
   surface:      '#1A1A1A',
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: SPACING.md,
-    paddingVertical: SPACING.md,
+    marginVertical:-SPACING.md
   },
 
   backBtn: {

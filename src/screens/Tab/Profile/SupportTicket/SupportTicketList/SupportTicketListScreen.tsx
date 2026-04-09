@@ -115,7 +115,9 @@ const TicketCard: React.FC<{ item: Ticket; onPress: () => void }> = ({
     </View>
   </TouchableOpacity>
 );
-const EmptyState: React.FC<{ onCreatePress: () => void }> = ({ onCreatePress }) => (
+const EmptyState: React.FC<{ onCreatePress: () => void }> = ({
+  onCreatePress,
+}) => (
   <View style={styles.emptyContainer}>
     <View style={styles.emptyIconCircle}>
       <Ionicons name="document-outline" size={72} color={COLORS.white} />
@@ -177,31 +179,33 @@ const SupportTicketListScreen: React.FC = ({ navigation }: any) => {
             <Text style={styles.createNewText}>Create New</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.filterRow}>
-          {FILTERS.map(f => (
-            <TouchableOpacity
-              key={f}
-              style={[
-                styles.filterPill,
-                activeFilter === f && styles.filterPillActive,
-              ]}
-              activeOpacity={0.8}
-              onPress={() => setActiveFilter(f)}
-            >
-              <Text
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <View style={styles.filterRow}>
+            {FILTERS.map(f => (
+              <TouchableOpacity
+                key={f}
                 style={[
-                  styles.filterPillText,
-                  activeFilter === f && styles.filterPillTextActive,
+                  styles.filterPill,
+                  activeFilter === f && styles.filterPillActive,
                 ]}
+                activeOpacity={0.8}
+                onPress={() => setActiveFilter(f)}
               >
-                {f}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
+                <Text
+                  style={[
+                    styles.filterPillText,
+                    activeFilter === f && styles.filterPillTextActive,
+                  ]}
+                >
+                  {f}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </ScrollView>
+                   
 
-        {/* ── Ticket Cards ── */}
-         {isEmpty ? (
+        {isEmpty ? (
           <EmptyState
             onCreatePress={() => navigation.navigate('CreateSupportTicket')}
           />

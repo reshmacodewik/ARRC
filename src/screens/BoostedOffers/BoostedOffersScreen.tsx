@@ -134,11 +134,14 @@ const BoostedOffersScreen: React.FC = () => {
         showsVerticalScrollIndicator={false}
       >
         <Header />
-        <HeaderBack
+        <View style={styles.header}>
+            <HeaderBack
           showBack
           title="Boosted Offers"
           onBackPress={() => navigation.goBack()}
         />
+        </View>
+      
         {OFFERS.map(offer => (
           <OfferCard
             key={offer.id}

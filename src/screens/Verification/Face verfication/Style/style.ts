@@ -76,7 +76,7 @@ export default StyleSheet.create({
   },
 
   bottomArea: {
-    paddingBottom: hp(5),
+    paddingBottom: hp(20),
     alignItems: 'center',
   },
 

@@ -5,10 +5,10 @@ import StackNavigator from './src/navigation/StackNavigator';
 import { IMAGES } from './src/constants/images';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'light';
+  const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaProvider style={{ flex: 1 }}>
+    <SafeAreaProvider >
       <ImageBackground
         source={IMAGES.splashBg}
         resizeMode="cover"

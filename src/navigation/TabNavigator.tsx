@@ -90,7 +90,7 @@ const CustomTabBar = ({ state, descriptors, navigation }: any) => {
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      tabBar={(props) => <CustomTabBar {...props} />}
+      tabBar={props => <CustomTabBar {...props} />}
       screenOptions={{
         headerShown: false,
       }}
@@ -98,7 +98,7 @@ const TabNavigator = () => {
       <Tab.Screen name="HomeTab" component={HomeScreen} />
       <Tab.Screen name="Card" component={PlaceholderScreen} />
       <Tab.Screen name="Education" component={PlaceholderScreen} />
-      <Tab.Screen name="Account" component={ProfileScreen} />
+      <Tab.Screen name="Account" component={PlaceholderScreen} />
     </Tab.Navigator>
   );
 };
@@ -118,16 +118,12 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     justifyContent: 'space-between',
     overflow: 'hidden',
-
-    // Shadow
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.4,
     shadowRadius: 20,
     elevation: 15,
   },
-
-  // ✅ Glass effect (instead of BlurView)
   glassBackground: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(20,20,20,0.75)',
@@ -135,7 +131,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.08)',
   },
-
+        
   tabItem: {
     flex: 1,
     alignItems: 'center',
@@ -165,3 +161,4 @@ const styles = StyleSheet.create({
 });
 
 export default TabNavigator;
+

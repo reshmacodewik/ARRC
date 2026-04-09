@@ -23,7 +23,6 @@ const SupportTicketListStyles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   createNewBtn: {
-    borderWidth: 1.5,
     backgroundColor: COLORS.goldGradientStart,
     borderRadius: RADIUS.full,
     paddingVertical: SPACING.sm - 1,

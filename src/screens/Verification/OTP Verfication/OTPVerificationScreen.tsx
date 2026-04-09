@@ -19,7 +19,6 @@ const OTPVerificationScreen = ({ navigation }: any) => {
   const [timer, setTimer] = useState(30);
   const inputRefs = useRef<Array<TextInput | null>>([null, null, null, null]);
 
-  /* ── Countdown timer ────────────────────────────────────── */
   useEffect(() => {
     if (timer === 0) return;
     const interval = setInterval(() => {
@@ -75,7 +74,6 @@ const OTPVerificationScreen = ({ navigation }: any) => {
     >
       <View style={styles.container}>
 
-        {/* ─── Back Button ─────────────────────────────────── */}
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.goBack()}
